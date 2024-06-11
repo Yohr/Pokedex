@@ -29,6 +29,7 @@ function PokémonCard() {
                 ) : (
                     <p>???</p>
                 )}
+                <figcaption>{pokemon.name}</figcaption>
             </figure>
         </div>
     );
