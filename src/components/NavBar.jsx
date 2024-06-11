@@ -1,16 +1,12 @@
-function NavBar({ handleNext, handlePrevious }) {
+import './NavBar.css'
 
-    const handleNext = () => {
-        setPokemonindex((prevIndex) => (prevIndex + 1) % pokemonList.length);
-    };
+function NavBar({ handleNext, handlePrevious, pokemonIndex, totalPokemon }) {
 
-    const handlePrevious = () => {
-        setPokemonindex((prevIndex) => (prevIndex - 1 + pokemonList.length) % pokemonList.length);
-    }
+
     return (
         <nav>
-            {pokemonindex < pokemonList.length - 1 && <button onClick={handleNext}>Next</button>}
-            {pokemonindex > 0 && <button onClick={handlePrevious}>Previous</button>}
+            {pokemonIndex < totalPokemon - 1 && <button onClick={handleNext}>Next</button>}
+            {pokemonIndex > 0 && <button onClick={handlePrevious}>Previous</button>}
         </nav>
 
     )

@@ -10,42 +10,34 @@ const pokemonList = [
 
   {
 
-    name: "bulbasaur",
+    name: "Méga-Ectoplasma",
 
     imgSrc:
 
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+      "https://www.pokepedia.fr/images/thumb/9/9e/M%C3%A9ga-Ectoplasma-XY.png/250px-M%C3%A9ga-Ectoplasma-XY.png",
 
   },
   {
 
-    name: "charmander",
+    name: "Ossatueur d'Alola",
 
     imgSrc:
 
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
-
-  },
-
-  {
-
-    name: "squirtle",
-
-    imgSrc:
-
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
+      "https://www.pokepedia.fr/images/thumb/3/33/Ossatueur_d%27Alola-SL.png/250px-Ossatueur_d%27Alola-SL.png",
 
   },
 
   {
 
-    name: "pikachu",
+    name: "Darkrai",
 
     imgSrc:
 
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+      "https://www.pokepedia.fr/images/thumb/1/17/Darkrai-DEPS.png/250px-Darkrai-DEPS.png",
 
   },
+
+
   {
 
     name: " Mega Alakazam",
@@ -56,14 +48,23 @@ const pokemonList = [
 
 ];
 function App() {
-  const [pokemonindex, setPokemonindex] = useState(0);
+  const [pokemonIndex, setPokemonIndex] = useState(0);
 
+  const handleNext = () => {
+    setPokemonIndex((prevIndex) => (prevIndex + 1) % pokemonList.length);
+  };
 
+  const handlePrevious = () => {
+    setPokemonIndex((prevIndex) => (prevIndex - 1 + pokemonList.length) % pokemonList.length);
+  }
   return (
     <>
-      <NavBar />
+      <NavBar handleNext={handleNext}
+        handlePrevious={handlePrevious}
+        pokemonIndex={pokemonIndex}
+        totalPokemon={pokemonList.length} />
       <div>
-        <PokémonCard pokemon={pokemonList[pokemonindex]} />
+        <PokémonCard pokemon={pokemonList[pokemonIndex]} />
 
       </div >
     </>
