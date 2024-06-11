@@ -5,6 +5,11 @@
   text-align: center;
 }
 
+body {
+  background-image: url(https://www.margxt.fr/wp-content/uploads/2020/03/Pokemon-Go-Arene-Defense.png);
+  background-size: cover;
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);

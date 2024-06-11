@@ -1,11 +1,10 @@
 
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from "react";
 import './App.css'
 import PokémonCard from './components/PokémonCard'
-import { useState } from "react";
 import NavBar from './components/NavBar';
-import { useEffect } from "react";
+import ModalComponent from './components/ModalComponent';
+import ModalPokemon from "./components/ModalPokemon";
 
 const pokemonList = [
 
@@ -17,6 +16,7 @@ const pokemonList = [
 
       "https://www.pokepedia.fr/images/thumb/9/9e/M%C3%A9ga-Ectoplasma-XY.png/250px-M%C3%A9ga-Ectoplasma-XY.png",
 
+    message: "Eeeectooo...eeeecttoooo....Ecttooooopllaaaasmaaaa!!!!"
   },
   {
 
@@ -26,6 +26,7 @@ const pokemonList = [
 
       "https://www.pokepedia.fr/images/thumb/3/33/Ossatueur_d%27Alola-SL.png/250px-Ossatueur_d%27Alola-SL.png",
 
+    message: "Ossatuuuuuueur"
   },
 
   {
@@ -35,7 +36,7 @@ const pokemonList = [
     imgSrc:
 
       "https://www.pokepedia.fr/images/thumb/1/17/Darkrai-DEPS.png/250px-Darkrai-DEPS.png",
-
+    message: "Dark...rai"
   },
 
 
@@ -43,24 +44,36 @@ const pokemonList = [
 
     name: " Mega Alakazam",
 
-    imgSrc: "https://www.pokepedia.fr/images/thumb/9/96/M%C3%A9ga-Alakazam-XY.png/250px-M%C3%A9ga-Alakazam-XY.png"
+    imgSrc: "https://www.pokepedia.fr/images/thumb/9/96/M%C3%A9ga-Alakazam-XY.png/250px-M%C3%A9ga-Alakazam-XY.png",
+    message: "Alakazam!"
 
   },
 
 ];
 function App() {
   const [pokemonIndex, setPokemonIndex] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+  const [showPokemonModal, setShowPokemonModal] = useState(true);
+  const [pokemonMessage, setPokemonMessage] = useState("");
 
   const handlePokemonSelect = (index) => {
     setPokemonIndex(index);
-
-    useEffect(() => {
-      window.load("Welcome pokemon trainer, you're late ! :D");
-
-    },
-      []
-    )
+    setPokemonMessage(pokemonList[index].message);
+    setShowPokemonModal(true);
   }
+
+  const closeModal = () => {
+    setShowModal(false);
+  }
+
+  useEffect(() => {
+    setShowModal(true);
+  }, []);
+
+  const closePokemonModal = () => {
+    setShowPokemonModal(false);
+  }
+
   return (
     <>
       <NavBar
@@ -69,7 +82,10 @@ function App() {
       <div>
         <PokémonCard pokemon={pokemonList[pokemonIndex]} />
       </div >
+      <ModalComponent showModal={showModal} closeModal={closeModal} />
+      <ModalPokemon showModal={showPokemonModal} closeModal={closePokemonModal} message={pokemonMessage} />
     </>
+
   )
 }
 
