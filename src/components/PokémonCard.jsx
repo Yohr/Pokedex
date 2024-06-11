@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 function PokémonCard({ pokemon }) {
     return (
-        <div>
+        <div className="profil">
             <h1>{pokemon.name}</h1>
             <figure>
                 {pokemon.imgSrc ? (

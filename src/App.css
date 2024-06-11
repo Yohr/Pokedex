@@ -33,4 +33,17 @@ nav {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-around;
+  background-color: black;
+}
+
+button {
+  color: blueviolet;
+  background-color: ;
+  border: 2px solid white;
+  background-color: black;
+}
+
+.profil {
+  border: black solid 3px;
+  background-color: blueviolet;
 }
